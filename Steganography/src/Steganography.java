@@ -63,9 +63,9 @@ public class Steganography {
 			for (int c = 0; c < pixels[0].length; c++) {
 
 				Color col = source[r][c].getColor();
-				pixels[r][c].setRed((pixels[r][c].getRed()*4)/4 + (col.getRed()* 64));
-				pixels[r][c].setGreen((pixels[r][c].getGreen()*4)/4 + (col.getGreen()* 64));
-				pixels[r][c].setBlue((pixels[r][c].getBlue()*4)/4 + (col.getBlue()* 64));
+				pixels[r][c].setRed((pixels[r][c].getRed()/64)*64 + (col.getRed()/4));
+				pixels[r][c].setGreen((pixels[r][c].getGreen()/64)*64 + (col.getGreen()/4));
+				pixels[r][c].setBlue((pixels[r][c].getBlue()/64)*64 + (col.getBlue()/4));
 		
 			}
 		}
