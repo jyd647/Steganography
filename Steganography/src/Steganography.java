@@ -11,6 +11,8 @@ public class Steganography {
 		beach2.explore();
 		Picture copy2 = testSetLow(beach2, Color.PINK);
 		copy2.explore(); 
+		Picture copy3 = revealPicture(copy2);
+		copy3.explore(); 
 	}
 	public static void clearLow( Pixel p )
 		{
@@ -37,6 +39,7 @@ public class Steganography {
 	p.setRed(p.getRed()+ (c.getRed()/64));
 	p.setGreen(p.getGreen()+ (c.getGreen()/64));
 	p.setBlue(p.getBlue()+ (c.getBlue()/64));
+	
 	}
 	public static Picture testSetLow(Picture p, Color co)
 	{
@@ -47,6 +50,28 @@ public class Steganography {
 		}
 		return p;
 	}
+	/**
+	 * Sets the highest two bits of each pixel’s colors
+	 * to the lowest two bits of each pixel’s color o s
+	*/
+	public static Picture revealPicture(Picture hidden)
+	{
+		Picture copy = new Picture(hidden);
+		Pixel[][] pixels = copy.getPixels2D();
+		Pixel[][] source = hidden.getPixels2D();
+		for (int r = 0; r < pixels.length; r++){
+			for (int c = 0; c < pixels[0].length; c++) {
+
+				Color col = source[r][c].getColor();
+				pixels[r][c].setRed((pixels[r][c].getRed()*4)/4 + (col.getRed()* 64));
+				pixels[r][c].setGreen((pixels[r][c].getGreen()*4)/4 + (col.getGreen()* 64));
+				pixels[r][c].setBlue((pixels[r][c].getBlue()*4)/4 + (col.getBlue()* 64));
+		
+			}
+		}
+	return copy;
+	}
+	
 	
 }
 
