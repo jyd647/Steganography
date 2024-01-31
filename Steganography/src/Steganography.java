@@ -72,6 +72,30 @@ public class Steganography {
 	return copy;
 	}
 	
-	
+	/**
+	 * Determines whether secret can be hidden in source, which is
+	 * true if source and secret are the same dimensions.
+	 * @param source is not null
+	 * @param secret is not null
+	 * @return true if secret can be hidden in source, false otherwise.
+	 */
+	public static boolean canHide(Picture source, Picture secret) {
+		if ((source.getWidth()== secret.getWidth()) && (source.getHeight() == secret.getHeight())){
+			return true;
+		}
+		return false;
+	}
+	/**
+	 * Creates a new Picture with data from secret hidden in data from source
+	 * @param source is not null
+	 * @param secret is not null
+	 * @return combined Picture with secret hidden in source
+	 * precondition: source is same width and height as secret
+	 */
+	public static Picture hidePicture(Picture source, Picture secret) {
+		if (canHide(source, secret)) {
+			
+		}
+	}
 }
 
